@@ -1,6 +1,7 @@
-var secondsNumber = 10;
-for (i = secondsNumber; i >= 0; i --) {
-    setTimeout(function () {
-        document.write("Hey there, " + i + " seconds left till changing backgroud colour ");
-    }, 1000);
-}
+var secondsNumber = 3;
+var i = secondsNumber;
+setInterval(function () {
+    document.body.innerHTML = ("Hey there, " + i + " seconds left till changing backgroud colour ");
+    i--;
+}, 1000);
+    
