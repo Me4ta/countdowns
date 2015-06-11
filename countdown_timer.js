@@ -9,6 +9,7 @@ var timeFunction = setInterval(function () {
         clearInterval(timeFunction);
         //change bgcolor here
         x[0].className = 'new-color';
+        x[0].innerText = ('Today is ' + moment().format('MMMM Do YYYY'));
     } 
 }, 1000);
 
