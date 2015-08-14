@@ -1,38 +1,37 @@
 ////create moment object for some date
 var someDate = moment('08-14-2015 18.00', 'MM-DD-YYYY HH.mm');
 
-var now = moment();
-
-//get duration in milliseconds between "someDate" and "now" in Ms
-var durationInMs = moment.duration({from: now, to: someDate});
-var periodDuration = moment.duration(durationInMs);
-
 //convertion Ms in a form understendable by humans
-function getFullTime(time) {
-    return time.get('years') + ' years ' + 
-            time.get('months') + ' months ' +
-            time.get('days') + ' days ' + 
-            time.get('hours') + ' hours ' +
-            time.get('minutes') + ' minutes ' + 
-            time.get('seconds') + ' seconds';
+function getFullTime(duration) {
+    return duration.get('years') + ' years ' + 
+            duration.get('months') + ' months ' +
+            duration.get('days') + ' days ' + 
+            duration.get('hours') + ' hours ' +
+            duration.get('minutes') + ' minutes ' + 
+            duration.get('seconds') + ' seconds';
 }
 
-var timeFunction = setInterval(function () {
-    x = document.querySelectorAll("p");
-    now = moment();
-    durationInMs = moment.duration({from: now, to: someDate});
-    periodDuration = moment.duration(durationInMs);
+//wait for DOM to get loaded
+document.addEventListener('DOMContentLoaded', function(event) { 
+    var pElements = document.querySelectorAll('p');
+    var timeElement = pElements[0];
 
-    x[0].innerText = 'Now ' + getFullTime(periodDuration) + ' left';
-    //durationInMs -= 1050;
+    var timeFunction = setInterval(function () {
+        var now = moment();
+        var durationFromNowToSome = moment.duration({from: now, to: someDate});
+        
+        timeElement.innerText = 'Now ' + getFullTime(durationFromNowToSome) + ' left';
 
-    if (durationInMs < 0)  {
-        clearInterval(timeFunction);
-        //change bgcolor here
-        x[0].className = 'new-color';
-        x[0].innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
-    } 
+        if (durationFromNowToSome < 0)  {
+            clearInterval(timeFunction);
+            //change bgcolor here
+            timeElement.className = 'new-color';
+            timeElement.innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
+        } 
 
-}, 1000);
+    }, 1000);
+});
+
+
 
     
