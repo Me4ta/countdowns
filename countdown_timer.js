@@ -20,10 +20,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
     var pElements = document.querySelectorAll('p');
     var timeElement1 = pElements[0];
     var timeElement2 = pElements[1];
+    var timeElement3 = pElements[2];
 
     var timeFunction = setInterval(function () {
         
-        timeElement1.innerText = 'Now ' + getFullTime(durationFromNowToSome) + ' left';
+        timeElement1.innerText = 'I\'m subtracting seconds and ' + getFullTime(durationFromNowToSome) + ' left';
+        
+
+        currentTime = moment();
+        durationFromCurrentToSome = moment.duration({from: currentTime, to: someDate});
+
+        timeElement2.innerText = 'I\'m counting difference and ' + getFullTime(durationFromCurrentToSome) + ' left';
+
+        difference = durationFromNowToSome - durationFromCurrentToSome;
+
+        timeElement3.innerText = 'Difference ' + difference;
+
         durationFromNowToSome.subtract(1, 'seconds');
 
         if (durationFromNowToSome < 0)  {
