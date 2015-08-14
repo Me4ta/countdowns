@@ -18,7 +18,8 @@ function getFullTime(duration) {
 //wait for DOM to get loaded
 document.addEventListener('DOMContentLoaded', function(event) { 
     var pElements = document.querySelectorAll('p');
-    var timeElement = pElements[0];
+    var timeElement1 = pElements[0];
+    var timeElement2 = pElements[1];
 
     var timeFunction = setInterval(function () {
         
