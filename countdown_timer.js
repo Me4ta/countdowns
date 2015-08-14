@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     var timeFunction = setInterval(function () {
         
-        timeElement.innerText = 'Now ' + getFullTime(durationFromNowToSome) + ' left';
+        timeElement1.innerText = 'Now ' + getFullTime(durationFromNowToSome) + ' left';
         durationFromNowToSome.subtract(1, 'seconds');
 
         if (durationFromNowToSome < 0)  {
             clearInterval(timeFunction);
             //change bgcolor here
-            timeElement.className = 'new-color';
-            timeElement.innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
+            timeElement1.className = 'new-color';
+            timeElement1.innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
         } 
 
     }, 1000);
