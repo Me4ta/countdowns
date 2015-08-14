@@ -1,6 +1,10 @@
 ////create moment object for some date
 var someDate = moment('08-14-2015 18.00', 'MM-DD-YYYY HH.mm');
 
+var now = moment();
+var durationFromNowToSome = moment.duration({from: now, to: someDate});
+
+
 //convertion Ms in a form understendable by humans
 function getFullTime(duration) {
     return duration.get('years') + ' years ' + 
@@ -17,10 +21,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
     var timeElement = pElements[0];
 
     var timeFunction = setInterval(function () {
-        var now = moment();
-        var durationFromNowToSome = moment.duration({from: now, to: someDate});
         
         timeElement.innerText = 'Now ' + getFullTime(durationFromNowToSome) + ' left';
+        durationFromNowToSome.subtract(1, 'seconds');
 
         if (durationFromNowToSome < 0)  {
             clearInterval(timeFunction);
