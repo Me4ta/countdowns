@@ -1,5 +1,5 @@
 ////create moment object for some date
-var someDate = moment('08-14-2015 18.00', 'MM-DD-YYYY HH.mm');
+var someDate = moment('08-19-2015 18.00', 'MM-DD-YYYY HH.mm');
 
 var now = moment();
 var durationFromNowToSome = moment.duration({from: now, to: someDate});
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         var differenceAcceleration = difference - lastDifference;
 
         timeElement3.innerText = 'Difference is ' + difference;
-        timeElement3.innerText = 'Acceleration is ' + differenceAcceleration;
+        timeElement4.innerText = 'Acceleration is ' + differenceAcceleration;
 
         lastDifference = difference;
         durationFromNowToSome.subtract(1, 'seconds');
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
             timeElement1.innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
         } 
 
-    }, 1000);
+    }, 997);
 });
 
 
