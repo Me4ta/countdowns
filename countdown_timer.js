@@ -37,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
         difference = durationFromNowToSome - durationFromCurrentToSome;
         var differenceAcceleration = difference - lastDifference;
 
+        timeElement3.innerText = 'Difference is ' + difference;
+        timeElement3.innerText = 'Acceleration is ' + differenceAcceleration;
+
         lastDifference = difference;
-
-        timeElement3.innerText = 'Difference ' + difference;
-
         durationFromNowToSome.subtract(1, 'seconds');
 
         if (durationFromNowToSome < 0)  {
