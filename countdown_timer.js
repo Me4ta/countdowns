@@ -3,7 +3,7 @@ var someDate = moment('08-14-2015 18.00', 'MM-DD-YYYY HH.mm');
 
 var now = moment();
 var durationFromNowToSome = moment.duration({from: now, to: someDate});
-
+var lastDifference = 0;
 
 //convertion Ms in a form understendable by humans
 function getFullTime(duration) {
@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     var timeElement1 = pElements[0];
     var timeElement2 = pElements[1];
     var timeElement3 = pElements[2];
+    var timeElement4 = pElements[3];
+
 
     var timeFunction = setInterval(function () {
         
@@ -33,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
         timeElement2.innerText = 'I\'m counting difference and ' + getFullTime(durationFromCurrentToSome) + ' left';
 
         difference = durationFromNowToSome - durationFromCurrentToSome;
+        var differenceAcceleration = difference - lastDifference;
+
+        lastDifference = difference;
 
         timeElement3.innerText = 'Difference ' + difference;
 
