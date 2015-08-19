@@ -4,6 +4,7 @@ var someDate = moment('08-19-2015 18.00', 'MM-DD-YYYY HH.mm');
 var now = moment();
 var durationFromNowToSome = moment.duration({from: now, to: someDate});
 var lastDifference = 0;
+durationFromNowToSome.subtract(1, 'seconds');
 
 //convertion Ms in a form understendable by humans
 function getFullTime(duration) {
@@ -46,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
         if (durationFromNowToSome < 0)  {
             clearInterval(timeFunction);
             //change bgcolor here
-            timeElement1.className = 'new-color';
-            timeElement1.innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
+            timeElement2.className = 'new-color';
+            timeElement2.innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
         } 
 
     }, 997);
