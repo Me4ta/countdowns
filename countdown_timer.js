@@ -3,8 +3,8 @@ var someDate = moment('08-19-2015 18.00', 'MM-DD-YYYY HH.mm');
 
 var now = moment();
 var durationFromNowToSome = moment.duration({from: now, to: someDate});
-var lastDifference = 0;
-durationFromNowToSome.subtract(1, 'seconds');
+//var lastDifference = 0;
+//durationFromNowToSome.subtract(1, 'seconds');
 
 //convertion Ms in a form understendable by humans
 function getFullTime(duration) {
@@ -19,15 +19,15 @@ function getFullTime(duration) {
 //wait for DOM to get loaded
 document.addEventListener('DOMContentLoaded', function(event) { 
     var pElements = document.querySelectorAll('p');
-    var timeElement1 = pElements[0];
+    //var timeElement1 = pElements[0];
     var timeElement2 = pElements[1];
-    var timeElement3 = pElements[2];
-    var timeElement4 = pElements[3];
+    //var timeElement3 = pElements[2];
+    //var timeElement4 = pElements[3];
 
 
     var timeFunction = setInterval(function () {
         
-        timeElement1.innerText = 'I\'m subtracting seconds and ' + getFullTime(durationFromNowToSome) + ' left';
+        //timeElement1.innerText = 'I\'m subtracting seconds and ' + getFullTime(durationFromNowToSome) + ' left';
         
 
         currentTime = moment();
@@ -35,23 +35,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
         timeElement2.innerText = 'I\'m counting difference and ' + getFullTime(durationFromCurrentToSome) + ' left';
 
-        difference = durationFromNowToSome - durationFromCurrentToSome;
-        var differenceAcceleration = difference - lastDifference;
+        //difference = durationFromNowToSome - durationFromCurrentToSome;
+        //var differenceAcceleration = difference - lastDifference;
 
-        timeElement3.innerText = 'Difference is ' + difference;
-        timeElement4.innerText = 'Acceleration is ' + differenceAcceleration;
+        //timeElement3.innerText = 'Difference is ' + difference;
+        //timeElement4.innerText = 'Acceleration is ' + differenceAcceleration;
 
-        lastDifference = difference;
-        durationFromNowToSome.subtract(1, 'seconds');
+        //lastDifference = difference;
+        //durationFromNowToSome.subtract(1, 'seconds');
 
-        if (durationFromNowToSome < 0)  {
+        if (durationFromCurrentToSome < 0)  {
             clearInterval(timeFunction);
             //change bgcolor here
             timeElement2.className = 'new-color';
             timeElement2.innerText = ('Today is ' + moment().format('MM-DD-YYYY hh:mm:ss a'));
         } 
 
-    }, 997);
+    }, 1000);
 });
 
 
