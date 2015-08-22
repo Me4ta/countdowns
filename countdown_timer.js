@@ -1,12 +1,22 @@
 
 //convertion Ms in a form understendable by humans
 function getFullTime(duration) {
-    return duration.get('years') + ' years ' + 
-            duration.get('months') + ' months ' +
-            duration.get('days') + ' days ' + 
-            duration.get('hours') + ' hours ' +
-            duration.get('minutes') + ' minutes ' + 
-            duration.get('seconds') + ' seconds';
+    var finalTime = '';
+    var timeElementsToShow = ['years', 'months', 'days', 'hours', 'minutes', 'seconds'];
+    var time = '';
+    for (time in timeElementsToShow) {
+        if (duration.get(timeElementsToShow[time]) > 0 || timeElementsToShow[time] === 'minutes' || timeElementsToShow[time] === 'seconds') {
+            //console.log(timeElementsToShow[time]);
+            finalTime += duration.get(timeElementsToShow[time]) + ' ' + timeElementsToShow[time] + ' ';
+        }
+    };
+    return finalTime;
+    // duration.get('years') + ' years ' + 
+    //         duration.get('months') + ' months ' +
+    //         duration.get('days') + ' days ' + 
+    //         duration.get('hours') + ' hours ' +
+    //         duration.get('minutes') + ' minutes ' + 
+    //         duration.get('seconds') + ' seconds';
 }
 
 function getSomeDate() {
